@@ -41,3 +41,9 @@ db.getCollection('20200315').aggregate([{$group: { _id : { msisdn : "$msisdn"},'
 //تعداد شماره ها با ستاتوس فقط یک ******************************************۸
 db.getCollection('big09').aggregate([{$match: {'status':'1'}},
 {$group: { _id : { msisdn : "$msisdn"}, 'count':{$sum : 0}}},{$out : "fail09"}/*کبی در کالیکشن جدید */],{allowDiskUse:true})
+
+
+
+
+//تعداد ریزالت های مختلف r
+db.getCollection('irancell_sdp_charge_2020426').aggregate([{$group:{_id: {r:'$r'},'count':{$sum:-1}}}])
